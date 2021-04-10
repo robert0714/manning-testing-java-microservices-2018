@@ -1,0 +1,42 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+        classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.7'
+    }
+}
+
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.jboss.arquillian:arquillian-bom:1.6.0.Final'
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
+dependencies {
+
+    testCompile rootProject
+    testCompile 'junit:junit:4.13.2'
+    testCompile 'org.assertj:assertj-core:3.19.0'
+
+    testCompile "io.specto:hoverfly-java:0.6.1"
+
+
+}
