@@ -2,6 +2,11 @@ This repository is for studying **["Testing Java Microservices - Using Arquillia
 
 # Other Reference
 
+*  https://github.com/arquillian/arquillian-showcase
+*  https://github.com/andreschaffer/microservices-testing-examples
+*  https://github.com/UltimateSoftware/testing-microservices-introduction
+*  https://github.com/hemanshuchauhan/microservices-test
+
 # Services
 1. Game  
     + Container: [Thorntail(WildFly Swarm)](https://thorntail.io/)

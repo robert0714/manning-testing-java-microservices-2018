@@ -19,7 +19,6 @@
     <!--tag::dm[]-->
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>io.thorntail</groupId>
                 <artifactId>bom</artifactId>
