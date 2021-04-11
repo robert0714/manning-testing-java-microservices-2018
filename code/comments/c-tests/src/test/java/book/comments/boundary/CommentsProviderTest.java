@@ -63,7 +63,7 @@ public class CommentsProviderTest {
                         "resources.xml").addAsWebInfResource
                         (EmptyAsset.INSTANCE, "beans.xml")
                 .addAsLibraries(Maven.resolver().resolve("org" +
-                        ".mongodb:mongodb-driver:3.2.2")
+                        ".mongodb:mongodb-driver:3.12.8")
                         .withTransitivity().as(JavaArchive.class));
 
         return webArchive;

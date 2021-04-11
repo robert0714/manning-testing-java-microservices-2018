@@ -70,7 +70,7 @@ public class EndToEndTest {
 
         return ShrinkWrap.create(ZipImporter.class, "commentsservice.war").importFrom(getFile
                 ("comments/build/libs/commentsservice.war")).as(WebArchive.class).addAsLibraries(Maven.resolver()
-                .resolve("org.mongodb:mongodb-driver:3.2.2").withTransitivity().as(JavaArchive.class)).addClass
+                .resolve("org.mongodb:mongodb-driver:3.12.8").withTransitivity().as(JavaArchive.class)).addClass
                 (MongoClientProvider.class).addAsWebInfResource("test-web.xml", "web.xml").addAsWebInfResource
                 ("test-resources.xml", "resources.xml");
     }
@@ -80,7 +80,7 @@ public class EndToEndTest {
     public static Archive gameaggregatorservice() throws Exception {
         return ShrinkWrap.create(ZipImporter.class, "gameaggregatorservice.war").importFrom(getFile
                 ("aggregator/build/libs/gameaggregatorservice.war")).as(WebArchive.class).addAsLibraries(Maven
-                .resolver().resolve("org.mongodb:mongodb-driver:3.2.2").withTransitivity().as(JavaArchive.class))
+                .resolver().resolve("org.mongodb:mongodb-driver:3.12.8").withTransitivity().as(JavaArchive.class))
                 .addClass(MongoClientProvider.class).addAsWebInfResource("test-web.xml", "web.xml")
                 .addAsWebInfResource("test-resources.xml", "resources.xml");
     }

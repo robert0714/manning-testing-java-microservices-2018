@@ -34,8 +34,8 @@ public class CommentsTest {
                 (EmptyAsset.INSTANCE, "beans.xml").addAsLibraries(
                         // <2>
                 Maven.resolver().resolve("org" +
-                        ".mongodb:mongodb-driver:3.2.2", "com" +
-                        ".lordofthejars:nosqlunit-mongodb:0.10.0")
+                        ".mongodb:mongodb-driver:3.12.8", "com" +
+                        ".lordofthejars:nosqlunit-mongodb:1.0.0")
                         .withTransitivity().as(JavaArchive.class))
                 .addAsWebInfResource("resources-test.xml",
                         "resources.xml") // <3>

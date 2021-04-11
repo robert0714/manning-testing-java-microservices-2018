@@ -11,7 +11,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.arquillian-bom>1.1.12.Final</version.arquillian-bom>
+        <version.arquillian-bom>1.6.0.Final</version.arquillian-bom>
         <version.javaee-api>7.0-1</version.javaee-api>
         <version.junit>4.13.2</version.junit>
         <version.tomee>7.0.4</version.tomee>

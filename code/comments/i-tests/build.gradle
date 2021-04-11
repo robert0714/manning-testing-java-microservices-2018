@@ -49,7 +49,7 @@ dependencies {
     testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container'
     testCompile 'org.apache.tomee:arquillian-tomee-remote:7.0.1'
 
-    testCompile ('com.lordofthejars:nosqlunit-mongodb:0.10.0')
+    testCompile ('com.lordofthejars:nosqlunit-mongodb:1.0.0')
 
 
     testCompile 'org.jboss.shrinkwrap:shrinkwrap-api'
