@@ -22,27 +22,26 @@ public class CommentsResourceTest {
 
     @Deployment(testable = false) // <2>
     public static WebArchive createDeployment() {
-        final WebArchive webArchive = ShrinkWrap.create(WebArchive
-                .class).addPackage(CommentsResource.class
-                .getPackage()).addClass(MongoClientProvider.class)
-                .addAsWebInfResource("test-resources.xml",
-                        "resources.xml").addAsWebInfResource
-                        (EmptyAsset.INSTANCE, "beans.xml")
-                .addAsLibraries(Maven.resolver().resolve("org" +
-                        ".mongodb:mongodb-driver:3.12.8")
+        final WebArchive webArchive = ShrinkWrap
+                .create(WebArchive.class)
+                .addPackage(CommentsResource.class.getPackage())
+                .addClass(MongoClientProvider.class)
+                .addAsWebInfResource("test-resources.xml", "resources.xml")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                .addAsLibraries(Maven.resolver()
+                        .resolve("org.mongodb:mongodb-driver:3.12.8")
                         .withTransitivity().as(JavaArchive.class));
 
-        System.out.println("webArchive = " + webArchive.toString
-                (true));
+        System.out.println("webArchive = " + 
+        webArchive.toString(true));
 
         return webArchive;
     }
 
     @Test
-    public void getCommentsOfGivenGame(@ArquillianResteasyResource
-                                           final CommentsResource
-                                                   resource) throws
-            Exception { // <3>
+    public void getCommentsOfGivenGame(
+            @ArquillianResteasyResource    final CommentsResource resource  ) // <3>
+                 throws   Exception { 
         Assert.assertNotNull(resource);
 
         final Response game = resource.getCommentsOfGivenGame(1);

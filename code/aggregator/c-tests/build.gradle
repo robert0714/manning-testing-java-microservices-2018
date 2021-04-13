@@ -22,7 +22,8 @@ repositories {
     mavenCentral()
     jcenter()
 }
-
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 test {
     testLogging {
         showStandardStreams = true
@@ -42,5 +43,5 @@ dependencies {
     testCompile 'org.arquillian.algeron:arquillian-algeron-pact-consumer-core:1.0.1'
     testCompile 'org.arquillian.algeron:arquillian-algeron-consumer-git-publisher:1.0.1'
     testCompile 'au.com.dius:pact-jvm-consumer_2.11:3.5.0'
-
+	testCompile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.1'
 }

@@ -1,0 +1,21 @@
+{
+    "collection1": {
+      "indexes": [
+        {
+          "index": {
+            "code": 1
+          }
+        }
+      ],
+      "data": [
+        {
+          "id": 1,
+          "code": "JSON dataset"
+        },
+        {
+          "id": 2,
+          "code": "Another row"
+        }
+      ]
+    }
+  }

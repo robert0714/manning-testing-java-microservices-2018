@@ -49,6 +49,7 @@ public class CommentsProviderTest {
     @ClassRule // <4>
     public static ManagedMongoDb managedMongoDb =
             newManagedMongoDbRule().build();
+    
 
     @Rule // <5>
     public MongoDbRule remoteMongoDbRule = new MongoDbRule(mongoDb

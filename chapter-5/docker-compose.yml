@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.2.8
+    ports:
+    - "27017:27017"    
+    environment:
+    - MONGODB_DATABASE=test
+    - TZ=Asia/Taipei
+#   network_mode:  "host"
+# mac系統無法使用network host
