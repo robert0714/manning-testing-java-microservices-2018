@@ -253,13 +253,15 @@
 		    <artifactId>shrinkwrap-api</artifactId>
 		    <scope>test</scope>
 		</dependency> 
+		<!-- When use guava:29.0+  CodeReady Studio 12.21.1 will be out of control  -->
+		<!-- guava:31.0+ is compatible with CRS 12.21.3 !  -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <!-- When use 29.0+  CodeReady Studio will be out of control  -->
-		    <version>29.0-jre</version>
+		    <artifactId>guava</artifactId>		    
+		    <version>31.0-jre</version>
 		    <scope>test</scope>
 		</dependency>
+		
 		<dependency>
 		    <groupId>javax.activation</groupId>
 		    <artifactId>activation</artifactId>
@@ -271,9 +273,11 @@
 
 
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
-            <version>2.27.2</version>
+           <groupId>com.github.tomakehurst</groupId>
+           <artifactId>wiremock</artifactId>
+           <version>2.27.2</version>
+		   <!--   <artifactId>wiremock-jre8</artifactId>-->
+           <!--  <version>2.33.2</version>-->
             <scope>test</scope>
             <exclusions>
                 <exclusion>
