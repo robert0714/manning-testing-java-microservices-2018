@@ -24,7 +24,16 @@ This repository is for studying **["Testing Java Microservices - Using Arquillia
         To update automatically, you can run:
         ```
         mvn io.thorntail:thorntail-maven-plugin:2.7.0.Final:migrate-from-wildfly-swarm
-        ```
+        ```		
+	  WildFly Swarm/Thorntail migration to Wildfly   
+      + Reason
+         * 2018 [WildFly Swarm rename to Thorntail.](https://issues.redhat.com/browse/DESIGN-1546)
+         * 2020.07.23  Thorntail has [announced end of life](https://thorntail.io/posts/the-end-of-an-era). Everything else on this site is now outdated. We recommend using Quarkus or WildFly.    
+	  
+      + Migration
+        * [How to migrate Thorntail applications](http://www.mastertheboss.com/jbossas/wildfly-swarm/how-to-migrate-thorntail-applications/)
+        * [Thorntail application Maven project migration](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/jboss_eap_xp_upgrade_and_migration_guide/thorntail-application-maven-project-migration_default)
+ 
     + Datastore: [H2 Database Engine](http://www.h2database.com/html/main.html)
     + Build tool: Maven
 2. Comments
