@@ -25,7 +25,7 @@ public class ArquillianRemoteTest extends ArquillianAbstractTest {
                 .getName()).addClass(ArquillianRemoteTest.class)
                 .addClass(ArquillianAbstractTest.class)
                 .addAsLibrary(Maven.resolver().resolve("com.github"
-                        + ".tomakehurst:wiremock-standalone:2.2.1")
+                        + ".tomakehurst:wiremock-standalone:2.27.2")
                         .withoutTransitivity().asSingleFile());
     }
 

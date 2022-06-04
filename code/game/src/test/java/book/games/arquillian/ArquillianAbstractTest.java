@@ -1,5 +1,6 @@
 package book.games.arquillian;
 
+import book.games.JaxRsConfiguration;
 import book.games.boundary.ExecutorServiceProducer;
 import book.games.boundary.Games;
 import book.games.boundary.GamesResource;
@@ -8,8 +9,11 @@ import book.games.control.GamesService;
 import book.games.entity.Game;
 import book.games.entity.ReleaseDate;
 import book.games.entity.SearchResult;
+import integrationtests.GamesTest;
+
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Before;
@@ -24,12 +28,19 @@ public abstract class ArquillianAbstractTest {
     public void before() {
         // <1>
         stubFor(get(anyUrl()).withQueryParam("search", equalTo
-                ("The" + " Legend of Zelda: Breath of the Wild"))
+                ("The Legend of Zelda: Breath of the Wild"))
                 .willReturn(aResponse().withStatus(200).withHeader
                         ("Content-Type", "application/json")
                         .withBody("[{\"id\":7346,\"name\":\"The " +
                                 "Legend of Zelda: Breath of the " +
                                 "Wild\"}]")));
+    	
+//        stubFor(get(anyUrl()) 
+//                .willReturn(aResponse().withStatus(200).withHeader
+//                        ("Content-Type", "application/json")
+//                        .withBody("[{\"id\":7346,\"name\":\"The " +
+//                                "Legend of Zelda: Breath of the " +
+//                                "Wild\"}]")));
     }
 
     // <2>
@@ -38,16 +49,18 @@ public abstract class ArquillianAbstractTest {
 
     // <3>
     public static WebArchive createBaseDeployment(final String name) {
-        return ShrinkWrap.create(WebArchive.class, name + ".war")
-                .addClasses(GamesResource.class,
-                        ExecutorServiceProducer.class, GamesService
-                                .class, IgdbGateway.class,
-                        SearchResult.class, Games.class, Game
-                                .class, ReleaseDate.class)
-                .addAsResource("test-persistence.xml",
-                        "META-INF/persistence.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans" +
-                        ".xml");
+    return ShrinkWrap.create(WebArchive.class, name + ".war")
+            .addClasses(GamesResource.class,
+					ExecutorServiceProducer.class, GamesService.class, IgdbGateway.class, SearchResult.class,
+					Games.class, Game.class, ReleaseDate.class)
+			.addAsWebInfResource(new ClassLoaderAsset("test-persistence.xml", GamesTest.class.getClassLoader()),
+					"classes/META-INF/persistence.xml")
+			.addPackage(JaxRsConfiguration.class.getPackage())
+			.addPackage(Games.class.getPackage())
+			.addPackage(GamesService.class.getPackage())
+			.addPackage(ReleaseDate.class.getPackage())
+			.addAsResource("META-INF/persistence.xml") 
+			.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 }
 // end::test[]

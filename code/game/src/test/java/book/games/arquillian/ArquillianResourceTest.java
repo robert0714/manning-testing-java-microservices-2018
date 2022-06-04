@@ -38,22 +38,36 @@ public class ArquillianResourceTest extends ArquillianAbstractTest
             throws Exception { // <4>
         // <5>
         final Client client = ClientBuilder.newBuilder().build();
-        final WebTarget target = client.target(url.toExternalForm()
-                + "?query=The Legend of Zelda: Breath of the Wild");
+        
+        String uri = url.toExternalForm()
+                + "?query=The Legend of Zelda: Breath of the Wild";
+        System.out.println(uri);
+        final WebTarget target = client.target(uri);
 
         // <6>
         final Future<Response> futureResponse = target.request()
                 .async().get();
         final Response response = futureResponse.get(5, TimeUnit
                 .SECONDS);
+        final int statusCode = response.getStatus();
+		Assert.assertEquals(200, statusCode);
+		System.out.println(statusCode);
+		
+		
+		// <7>
+		
+//        String value = response.readEntity(String.class);
+//        System.out.println(value);
+        //[{"id":7346,"name":"The Legend of Zelda: Breath of the Wild"}]
+		
+        
+//        final List<SearchResult> results = response.readEntity(List.class);
+//		final SearchResult[] array = response.readEntity(SearchResult[].class);
+		
+        final List<SearchResult> results = response.readEntity(new GenericType<List<SearchResult>>() { });
 
-        // <7>
-        final List<SearchResult> results = response.readEntity(new GenericType<List<SearchResult>>() {
-        });
-
-        Assert.assertEquals("Unexpected title", "The Legend of " +
-                "Zelda: Breath of the Wild", results.get(0).getName
-                ());
+        Assert.assertEquals("Unexpected title", "The Legend of Zelda: Breath of the Wild",
+        		results.get(0).getName());
     }
 }
 // end::test[]

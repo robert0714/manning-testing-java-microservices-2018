@@ -32,6 +32,13 @@ public class GamesResource {
     @Inject // <2>
             ExecutorServiceProducer managedExecutorService;
 
+    
+    @GET
+    @Path("/test")
+    @Produces 
+    public String find( ) {
+            return  "i', robert";                     
+    }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @javax.ejb.Asynchronous // <3>
